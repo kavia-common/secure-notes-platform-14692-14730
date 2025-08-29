@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Secure Notes Frontend
+
+Modern, minimalistic notes application built with Next.js App Router.
+Implements:
+- User authentication (client-side, localStorage demo)
+- Create, read, update, delete notes
+- List and search notes
+- Responsive layout with sidebar, header, and main editor
+- Light theme with primary #1A73E8, secondary #F1F3F4, accent #F9AB00
 
 ## Getting Started
 
-First, run the development server:
+Install and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This demo stores users locally in the browser (no backend). Use any email/password to sign up/sign in. Replace the AuthProvider with a real provider for production.
 
-## Learn More
+## Data Persistence
 
-To learn more about Next.js, take a look at the following resources:
+Notes are saved to localStorage, namespaced per user.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- src/app/page.tsx — Routing root switching between Auth and Notes views
+- src/components/AuthProvider — Authentication context (sign in/up/out)
+- src/components/notes/* — Notes context and UI (list and editor)
+- src/components/ui/* — Header, Sidebar, Auth card
+- src/lib/storage.ts — localStorage-based persistence
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- npm run dev — Start dev server
+- npm run build — Production build
+- npm start — Start production server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+This app is frontend-only per the task scope.
